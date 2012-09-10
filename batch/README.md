@@ -12,8 +12,7 @@ The app is a vanilla Spring MVC web application, so you can build with
 Maven (or your tool of choice) and deploy with `vmc`, or use the
 SpringSource ToolSuite CloudFoundry server tooling.
 
-First create the services (the names are significant because they are
-hard-coded in the application).  Using the command line:
+First create the services. Using the command line:
 
     $ vmc create-service mysql mysql
 
