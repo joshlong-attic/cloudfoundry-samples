@@ -1,0 +1,13 @@
+---
+applications:
+  target/env-1.0.0-BUILD-SNAPSHOT:
+    name: hello-env
+    framework:
+      name: spring
+      info:
+        mem: 512M
+        description: Java SpringSource Spring Application
+        exec: 
+    url: ${name}.${target-base}
+    mem: 128M
+    instances: 1
