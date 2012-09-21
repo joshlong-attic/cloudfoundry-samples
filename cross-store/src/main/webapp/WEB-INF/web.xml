@@ -15,7 +15,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>org.cloudfoundry.config.WebConfiguration</param-value>
+            <param-value>org.springframework.data.mongodb.examples.custsvc.config.WebConfiguration</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

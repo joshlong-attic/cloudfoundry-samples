@@ -14,7 +14,7 @@
     <name>batch</name>
     <properties>
         <spring.batch.version>2.1.8.RELEASE</spring.batch.version>
-        <cf.runtime.version>0.8.1</cf.runtime.version>
+        <cf.runtime.version>0.8.2</cf.runtime.version>
     </properties>
     <dependencies>
         <dependency>

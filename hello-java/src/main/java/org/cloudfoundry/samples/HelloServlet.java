@@ -1,5 +1,7 @@
 package org.cloudfoundry.samples;
 
+import org.cloudfoundry.runtime.env.CloudEnvironment;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -13,10 +15,12 @@ public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CloudEnvironment cloudEnvironment = new CloudEnvironment();
+
 		response.setContentType("text/plain");
 		response.setStatus(200);
 		PrintWriter writer = response.getWriter();
-		writer.println("Hello from " + System.getenv("VCAP_APP_HOST") + ":" + System.getenv("VCAP_APP_PORT"));
+		writer.println("Hello from " +  cloudEnvironment.getInstanceInfo().getHost()+ ":" + cloudEnvironment.getInstanceInfo().getPort() );
 		writer.close();
 	}
 }

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class CloudFoundryEnvironmentHandlerInterceptor extends HandlerInterceptorAdapter {
 
     @Inject
-    CloudEnvironment cloudEnvironment;
+    private CloudEnvironment cloudEnvironment;
 
     @PostConstruct
     public void setup() {

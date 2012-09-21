@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Data MongoDB/MySQL Cross-Store</title>
-    <link rel="stylesheet" href="../resources/css/main.css" type="text/css"></link>
-    <link rel="stylesheet" href="../resources/css/colors.css" type="text/css"></link>
-    <link rel="stylesheet" href="../resources/css/local.css" type="text/css"></link>
+    <link rel="stylesheet" href="../resources/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/colors.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/local.css" type="text/css"/>
 </head>
 <body>
 <div id="page">
