@@ -10,8 +10,8 @@
     <properties>
         <java-version>1.6</java-version>
         <org.springframework-version>3.1.0.RELEASE</org.springframework-version>
-        <spring.data.mongo.version>1.0.0.RELEASE</spring.data.mongo.version>
-        <org.cloudfoundry-version>0.8.1</org.cloudfoundry-version>
+        <spring.data.mongo.version>1.1.0.M2</spring.data.mongo.version>
+        <org.cloudfoundry-version>0.8.2</org.cloudfoundry-version>
         <org.aspectj-version>1.6.11</org.aspectj-version>
         <org.slf4j.version>1.6.1</org.slf4j.version>
         <log4j.version>1.2.15</log4j.version>
@@ -292,19 +292,20 @@
     </dependencies>
     <repositories>
         <!-- For testing against latest Spring snapshots -->
-        <repository>
+    <!--    <repository>
             <id>org.springframework.maven.snapshot</id>
             <name>Spring Maven Snapshot Repository</name>
             <url>http://maven.springframework.org/snapshot</url>
             <releases><enabled>false</enabled></releases>
             <snapshots><enabled>true</enabled></snapshots>
-        </repository>
+        </repository>-->
         <!-- For developing against latest Spring milestones -->
         <repository>
             <id>org.springframework.maven.milestone</id>
             <name>Spring Maven Milestone Repository</name>
             <url>http://maven.springframework.org/milestone</url>
             <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
         </repository>
         <!-- For JPA and Hibernate artifacts -->
         <repository>
@@ -318,6 +319,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>${java-version}</source>
                     <target>${java-version}</target>
@@ -326,6 +328,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
                 <configuration>
                     <warName>customer-service</warName>
                 </configuration>
