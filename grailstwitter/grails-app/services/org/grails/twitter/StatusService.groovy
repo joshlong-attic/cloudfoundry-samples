@@ -9,6 +9,7 @@ class StatusService {
     void updateStatus(long userId, String message) {
         def status = new Status(message: message, authorId: userId).save(flush: true, failOnError: true)
         rabbitSend 'search.sync', '', "${status.id}:${status.class.name}"
+        log.info "Event: reindex status ${status.id}"
         
         runAsync {
             tagService.extractTagsFromMessage(status)
@@ -30,26 +31,17 @@ class StatusService {
     def currentTimeline(long userId, int maxMessages) {
         maxMessages = maxMessages ?: 20
         def per = Person.get(userId)
-        def messages = Status.withCriteria {
-            or {
-                eq 'authorId', per.id
-                if (per.followed) {
-                    inList 'authorId', per.followed*.id
-                }
-            }
-            maxResults maxMessages
-            order 'dateCreated', 'desc'
-        }
-        return messages
+        def messages = Status.whereAny {
+            authorId == per.id
+            if (per.followed) authorId in per.followed*.id
+        }.order 'dateCreated', 'desc'
+
+        return messages.list(max: maxMessages)
     }
 
     def postsByTag(String tagName, int maxMessages) {
         maxMessages = maxMessages ?: 20
-        def messages = Status.withCriteria {
-            'in'("tags", tagName.toLowerCase())
-            maxResults maxMessages
-            order 'dateCreated', 'desc'
-        }
+        def messages = Status.findAllByTags(tagName.toLowerCase(), [max: maxMessages, sort: 'dateCreated', order: 'desc'])
         return messages
     }
 }
