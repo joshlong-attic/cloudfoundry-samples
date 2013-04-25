@@ -112,12 +112,12 @@
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-admin-manager</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-admin-resources</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>

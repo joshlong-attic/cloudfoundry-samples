@@ -13,17 +13,12 @@
 
 package org.springframework.batch.admin.sample.web;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.cloudfoundry.runtime.env.CloudEnvironment;
-import org.cloudfoundry.runtime.env.RdbmsServiceInfo;
+import org.apache.commons.logging.*;
+import org.cloudfoundry.runtime.env.*;
 import org.springframework.util.Assert;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.*;
+import java.util.*;
 
 /**
  * @author Dave Syer
@@ -58,8 +53,8 @@ public class EnvironmentContextListener implements ServletContextListener {
             propsToSet.put("MYSQL_PASSWORD", rdbmsServiceInfo.getPassword());
             propsToSet.put("MYSQL_DATABASE", rdbmsServiceInfo.getDatabase());
 
-            for (String k : propsToSet.keySet())
-                System.setProperty(k, propsToSet.get(k));
+            for (Map.Entry<String, String> entry : propsToSet.entrySet())
+                System.setProperty(entry.getKey(), entry.getValue());
         }
         return detected;
     }
